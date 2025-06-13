@@ -1,43 +1,47 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet, View, Text } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { Platform, StyleSheet, View, Text, ScrollView, SafeAreaView, RefreshControl } from 'react-native';
+import React, { useState, useEffect } from "react";
 
 export default function HomeScreen() {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1000)
+  }, []);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-        <View className="">
-          <Text className='text-red-500'>Hola</Text>
+    <SafeAreaView style={styles.safe} className='bg-slate-100 items-center justify-center'>
+      <ScrollView contentContainerStyle={styles.scrollView}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }>
+        <View className="flex-1 items-center justify-center w-screen bg-slate-100 px-8 gap-8">
+          <Text className='text-xl text-black' style={styles.texts}>REPRESENT</Text>
         </View>
-    </ParallaxScrollView>
+      </ScrollView>
+    </SafeAreaView >
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  safe: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? 0 : 20,
+    paddingBottom: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+
+  scrollView: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 0,
+    paddingVertical: 20,
+    width: "auto",
+  }, 
+
+  texts: {
+    fontFamily: "FugazOne",
+  }
 });
