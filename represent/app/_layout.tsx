@@ -1,11 +1,12 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import { Drawer } from 'expo-router/drawer';
 import 'react-native-reanimated';
 import '../global.css';
+import { Ionicons } from '@expo/vector-icons';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -21,11 +22,31 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <Drawer>
+          <Drawer.Screen name="index" options={{
+            drawerLabel: 'Home',
+            title: 'REPRESENT',
+            drawerActiveTintColor: 'white',
+            drawerActiveBackgroundColor: 'black',
+            drawerIcon: ({ color, size }) => <Ionicons name="home" size={20} color={color} />
+          }} />
+          <Drawer.Screen name="fw19" options={{
+            drawerLabel: 'FW19',
+            title: 'REPRESENT',
+            drawerActiveTintColor: 'white',
+            drawerActiveBackgroundColor: 'black',
+            drawerIcon: ({ color, size }) => <Ionicons name="shirt" size={20} color={color} />
+          }} />
+          <Drawer.Screen name="terriers" options={{
+            drawerLabel: 'Terriers',
+            title: 'REPRESENT',
+            drawerActiveTintColor: 'white',
+            drawerActiveBackgroundColor: 'black',
+            drawerIcon: ({ color, size }) => <Ionicons name="footsteps" size={20} color={color} />
+          }} />
+        </Drawer>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }
