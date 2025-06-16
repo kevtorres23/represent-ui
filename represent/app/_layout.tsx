@@ -33,7 +33,7 @@ export default function RootLayout() {
           }} />
           <Drawer.Screen name="fw19" options={{
             drawerLabel: 'FW19',
-            title: 'REPRESENT',
+            title: 'FW19',
             drawerActiveTintColor: 'white',
             drawerActiveBackgroundColor: 'black',
             drawerIcon: ({ color, size }) => <Ionicons name="shirt" size={20} color={color} />

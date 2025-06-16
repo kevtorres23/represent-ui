@@ -19,9 +19,9 @@ function FW19(props: productProps) {
     }, []);
 
     return (
-        <SafeAreaView style={styles.safe} className='bg-slate-50 items-center justify-center'>
-            <ScrollView contentContainerStyle={styles.scrollView}>
-                <View className="flex-1 items-center justify-center w-screen gap-16 pt-6">
+        <SafeAreaView style={styles.safe}>
+            <ScrollView contentContainerStyle={styles.scrollView} className="bg-white">
+                <View className="flex-1 items-center justify-center w-screen gap-16 py-6">
                     <View className="flex-row gap-5">
                         <ProductCard imageSrc={require('../assets/images/hoodie1.png')} name="THE ETERNAL THRILL HOODIE" price={50} />
                         <ProductCard imageSrc={require('../assets/images/tshirt1.png')} name="HONDA T-SHIRT BLACK STYLE" price={60} />
@@ -47,28 +47,19 @@ const styles = StyleSheet.create({
 
     safe: {
         flex: 1,
-        paddingTop: Platform.OS === "android" ? 0 : 20,
-        paddingBottom: 20,
+        paddingTop: Platform.OS === "android" ? 0 : 50,
+        paddingBottom: Platform.OS === "android" ? 47 : 0,
     },
 
     scrollView: {
-        alignItems: "center",
-        justifyContent: "center",
         paddingHorizontal: 0,
         paddingVertical: 20,
+        height: "auto",
         width: "auto",
     },
 
     titles: {
         fontFamily: "FugazOne",
-    },
-
-    image1: {
-        backgroundColor: 'rgba(0,0,0, 0.15)',
-    },
-
-    image2: {
-        backgroundColor: 'rgba(0,0,0, 0.30)',
     }
 })
 

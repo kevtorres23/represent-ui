@@ -8,12 +8,12 @@ type productProps = {
 
 function ProductCard(props: productProps) {
     return (
-        <View className="flex-col gap-2 max-h-60 items-center justify-center max-w-44">
-            <View className="bg-slate-200 rounded-xl py-4">
+        <View className="flex-col gap-3 max-h-60 items-center justify-center max-w-44">
+            <View className="bg-gray-100 rounded-xl py-4 shadow-[0_3px_10px_rgb(0,0,0,0.8)]">
                 <Image source={props.imageSrc} className="max-w-full max-h-44" />
             </View>
             <Text style={styles.productName} className="text-center text-base">{props.name}</Text>
-            <Text className="text-center text-base text-slate-500 font-semibold mt-[-5px]">${props.price} USD</Text>
+            <Text className="text-center text-base text-slate-500 font-semibold mt-[-7px]">${props.price} USD</Text>
         </View>
     )
 }
