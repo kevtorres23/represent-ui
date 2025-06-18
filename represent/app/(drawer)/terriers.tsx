@@ -1,7 +1,7 @@
 import { View, Text, Image, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Platform } from "react-native";
 import React, { useState } from "react";
 
-type TerrierColor = "black" | "yellow" | "blue";
+type TerrierColor = "black" | "yellow" | "red";
 
 function Terriers() {
     const [terrierColor, setTerrierColor] = useState<TerrierColor>("black");
@@ -9,13 +9,13 @@ function Terriers() {
     const terrierColors: Record<TerrierColor, string> = {
         black: "BLACK",
         yellow: "YELLOW",
-        blue: "BLUE",
+        red: "RED",
     }
 
     const terrierImages: Record<TerrierColor, any> = {
-        black: require('../assets/images/black-terrier.png'),
-        yellow: require('../assets/images/black-terrier.png'),
-        blue: require('../assets/images/black-terrier.png'),
+        black: require('../../assets/images/black-terrier.png'),
+        yellow: require('../../assets/images/yellow-terrier.png'),
+        red: require('../../assets/images/red-terrier.png'),
     }
 
     return (
@@ -43,9 +43,9 @@ function Terriers() {
                             <View className="color-selector border-b border-b-gray-200 pb-5">
                                 <View className="flex-row items-center justify-between">
                                     <Text className="font-bold">COLOR</Text>
-                                    <TouchableOpacity className="w-10 h-10 rounded-[50%] bg-slate-900"></TouchableOpacity>
-                                    <TouchableOpacity className="w-10 h-10 rounded-[50%] bg-yellow-500"></TouchableOpacity>
-                                    <TouchableOpacity className="w-10 h-10 rounded-[50%] bg-red-500"></TouchableOpacity>
+                                    <TouchableOpacity onPressOut={() => setTerrierColor("black")} style={ terrierColor === "black" ? styles.activeColor : null } className="w-10 h-10 rounded-[50%] bg-slate-900"></TouchableOpacity>
+                                    <TouchableOpacity onPressOut={() => setTerrierColor("yellow")} style={ terrierColor === "yellow" ? styles.activeColor : null } className="w-10 h-10 rounded-[50%] bg-yellow-500"></TouchableOpacity>
+                                    <TouchableOpacity onPressOut={() => setTerrierColor("red")} style={ terrierColor === "red" ? styles.activeColor : null } className="w-10 h-10 rounded-[50%] bg-red-500"></TouchableOpacity>
                                 </View>
                             </View>
 
@@ -67,7 +67,7 @@ function Terriers() {
                         </View>
                     </View>
 
-                    <TouchableOpacity className="w-full items-center justify-center bg-black py-3 rounded-2xl">
+                    <TouchableOpacity className="w-full items-center justify-center bg-black py-3 rounded-2xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
                         <Text className="text-white text-lg font-bold">
                             $300.00 USD
                         </Text>
@@ -98,6 +98,12 @@ const styles = StyleSheet.create({
 
     titles: {
         fontFamily: "FugazOne",
+    },
+
+    activeColor: {
+        borderWidth: 3,
+        borderStyle: "solid",
+        borderColor: "grey",
     }
 })
 

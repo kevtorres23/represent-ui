@@ -1,10 +1,8 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet, View, Text, ScrollView, SafeAreaView, RefreshControl, ImageBackground } from 'react-native';
 import React, { useState, useEffect } from "react";
-import '../gesture-handler';
-import { Stack, useNavigation } from 'expo-router';
 
-export default function HomeScreen() {
+function HomeScreen() {
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = React.useCallback(() => {
@@ -21,13 +19,13 @@ export default function HomeScreen() {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
         <View className="flex-1 items-center justify-center w-screen gap-6 h-screen flex-col">
-          <ImageBackground source={require('../assets/images/fw19-cover.jpg')} resizeMode="cover" className='flex-1 w-full h-full items-center justify-center'>
+          <ImageBackground source={require('../../assets/images/fw19-cover.jpg')} resizeMode="cover" className='flex-1 w-full h-full items-center justify-center'>
             <View className='w-full h-full items-center justify-center' style={styles.image1}>
               <Text style={styles.titles} className='text-6xl text-white'>FW19</Text>
             </View>
           </ImageBackground>
 
-          <ImageBackground source={require('../assets/images/terrier-cover.jpg')} resizeMode="cover" className='flex-1 w-full h-full items-center justify-center'>
+          <ImageBackground source={require('../../assets/images/terrier-cover.jpg')} resizeMode="cover" className='flex-1 w-full h-full items-center justify-center'>
             <View className='w-full h-full items-center justify-center' style={styles.image2}>
               <View>
                 <Text style={styles.titles} className='text-6xl text-white'>THE</Text>
@@ -42,6 +40,8 @@ export default function HomeScreen() {
     </SafeAreaView >
   );
 }
+
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   safe: {

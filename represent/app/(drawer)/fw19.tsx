@@ -2,13 +2,7 @@ import { View, Text, Image, StyleSheet, SafeAreaView, ScrollView, RefreshControl
 import React, { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 
-type productProps = {
-    imageSrc: any,
-    name: string,
-    price: number,
-}
-
-function FW19(props: productProps) {
+const FW19 = () => {
     const [refreshing, setRefreshing] = useState(false);
 
     const onRefresh = React.useCallback(() => {
@@ -23,16 +17,16 @@ function FW19(props: productProps) {
             <ScrollView contentContainerStyle={styles.scrollView} className="bg-white">
                 <View className="flex-1 items-center justify-center w-screen gap-16 py-6">
                     <View className="flex-row gap-5">
-                        <ProductCard imageSrc={require('../assets/images/hoodie1.png')} name="THE ETERNAL THRILL HOODIE" price={50} />
-                        <ProductCard imageSrc={require('../assets/images/tshirt1.png')} name="HONDA T-SHIRT BLACK STYLE" price={60} />
+                        <ProductCard imageSrc={require('../../assets/images/hoodie1.png')} name="THE ETERNAL THRILL HOODIE" price={50} />
+                        <ProductCard imageSrc={require('../../assets/images/tshirt1.png')} name="HONDA T-SHIRT BLACK STYLE" price={60} />
                     </View>
                     <View className="flex-row gap-5">
-                        <ProductCard imageSrc={require('../assets/images/hoodie2.png')} name="GREEN BASIC STYLE HOODIE" price={80} />
-                        <ProductCard imageSrc={require('../assets/images/tshirt2.png')} name="REPRESENT ORIGINALS T-SHIRT" price={45} />
+                        <ProductCard imageSrc={require('../../assets/images/hoodie2.png')} name="GREEN BASIC STYLE HOODIE" price={80} />
+                        <ProductCard imageSrc={require('../../assets/images/tshirt2.png')} name="REPRESENT ORIGINALS T-SHIRT" price={45} />
                     </View>
                     <View className="flex-row gap-5">
-                        <ProductCard imageSrc={require('../assets/images/hoodie1.png')} name="THE ETERNAL THRILL HOODIE" price={50} />
-                        <ProductCard imageSrc={require('../assets/images/tshirt1.png')} name="HONDA T-SHIRT BLACK STYLE" price={60} />
+                        <ProductCard imageSrc={require('../../assets/images/hoodie1.png')} name="THE ETERNAL THRILL HOODIE" price={50} />
+                        <ProductCard imageSrc={require('../../assets/images/tshirt1.png')} name="HONDA T-SHIRT BLACK STYLE" price={60} />
                     </View>
                 </View>
             </ScrollView>
